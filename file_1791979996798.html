@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viserys Nemesis - Vallah morghulis 🇦🇱.</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', monospace;
+        }
+
+        body {
+            background: #030305;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Loading Screen - comme Dark-Store */
+        #loading {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: #000000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            gap: 20px;
+        }
+
+        .loading-text {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+            animation: pulse 1.5s infinite;
+        }
+
+        .loading-text span {
+            background: linear-gradient(135deg, #ffffff, #a0a0a0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .progress-container {
+            width: 300px;
+            height: 3px;
+            background: #222;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: #ffffff;
+            box-shadow: 0 0 20px #fff;
+            transition: width 0.1s ease;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        /* Navigation */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 4rem;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    position: relative;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: #666;
+    font-weight: 300;
+}
+
+.nav-links {
+    display: flex;
+    gap: 3rem;
+}
+
+.nav-links a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: 0.2s;
+    letter-spacing: 1px;
+}
+
+.nav-links a:hover {
+    color: #fff;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+/* Hero Section */
+.hero {
+    padding: 4rem 4rem 2rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 0.3rem 1.2rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 40px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #aaa;
+    margin-bottom: 2rem;
+}
+
+.hero-title {
+    font-size: 4.2rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.hero-title span {
+    background: linear-gradient(135deg, #fff, #aaa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: block;
+}
+
+.hero-desc {
+    color: #aaa;
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    border-left: 2px solid #fff;
+    padding-left: 2rem;
+}
+
+/* Stats */
+.stats {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.stat-item {
+    border-right: 1px solid rgba(255,255,255,0.05);
+    padding-right: 2rem;
+}
+
+.stat-item:last-child {
+    border-right: none;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #666;
+    margin-top: 0.3rem;
+}
+/* Hero Card */
+.hero-card {
+    background: #111113;
+    border: 1px solid rgba(255,255,255,0.03);
+    border-radius: 2rem;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.hero-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(255,255,255,0.01) 10px,
+        rgba(255,255,255,0.01) 20px
+    );
+    animation: moveBg 30s linear infinite;
+    z-index: 0;
+}
+
+@keyframes moveBg {
+    0% { transform: translate(0,0); }
+    100% { transform: translate(10%,10%); }
+}
+
+.hero-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-card i {
+    font-size: 2.5rem;
+    color: #fff;
+    opacity: 0.3;
+    margin-bottom: 2rem;
+}
+
+.hero-card h3 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.hero-card p {
+    color: #888;
+    margin-bottom: 2rem;
+}
+
+/* Audio player - Vallah morghulis.*/
+audio {
+    width: 100%;
+    height: 45px;
+    border-radius: 30px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    margin: 1.5rem 0;
+}
+
+audio::-webkit-media-controls-panel {
+    background: #1a1a1a;
+}
+
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+    color: #fff;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.tech-tag {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 0.4rem 1.2rem;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    color: #aaa;
+}
+/* Services Section */
+.services-section {
+    padding: 6rem 4rem;
+}
+
+.section-header {
+    margin-bottom: 4rem;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.section-header p {
+    color: #888;
+    max-width: 600px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.service-card {
+    background: #111113;
+    border: 1px solid rgba(255,255,255,0.03);
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    transition: 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255,255,255,0.1);
+    background: #141418;
+}
+
+.service-icon {
+    font-size: 2rem;
+    color: #fff;
+    opacity: 0.4;
+    margin-bottom: 1.5rem;
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.service-card p {
+    color: #888;
+    margin-bottom: 1.5rem;
+}
+
+.service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.service-tags span {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.03);
+    padding: 0.2rem 1rem;
+    border-radius: 30px;
+    font-size: 0.7rem;
+    color: #aaa;
+}
+/* About Section */
+.about-section {
+    padding: 4rem;
+    background: #0a0a0c;
+    border-top: 1px solid rgba(255,255,255,0.02);
+    border-bottom: 1px solid rgba(255,255,255,0.02);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-content h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.about-content p {
+    color: #aaa;
+    margin-bottom: 2rem;
+}
+
+.quiet-quote {
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: #fff;
+    border-left: 2px solid #fff;
+    padding-left: 2rem;
+    margin: 2rem 0;
+    opacity: 0.8;
+    font-style: italic;
+}
+
+.skills-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    list-style: none;
+}
+
+.skills-list li {
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.skills-list li i {
+    color: #fff;
+    font-size: 0.8rem;
+    opacity: 0.5;
+}
+/* Products Section */
+.products-section {
+    padding: 6rem 4rem;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.product-card {
+    background: #111113;
+    border: 1px solid rgba(255,255,255,0.03);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    transition: 0.3s;
+    position: relative;
+}
+
+.product-card.special {
+    border: 1px solid rgba(255,255,255,0.1);
+    background: #141418;
+}
+
+.product-card.special::after {
+    content: '🇦🇱';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255,255,255,0.2);
+}
+
+.product-icon {
+    font-size: 2rem;
+    color: #fff;
+    opacity: 0.3;
+    margin-bottom: 1.5rem;
+}
+
+.product-card h3 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.product-price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 1rem 0;
+}
+
+.product-btn {
+    width: 100%;
+    padding: 1rem;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #fff;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.product-btn:hover {
+    background: #fff;
+    color: #000;
+}
+/* Payment Section */
+.payment-section {
+    padding: 4rem;
+    background: #0a0a0c;
+    border-top: 1px solid rgba(255,255,255,0.02);
+    border-bottom: 1px solid rgba(255,255,255,0.02);
+    text-align: center;
+}
+
+.payment-section h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 3rem;
+}
+
+.payment-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.payment-item {
+    background: #111113;
+    padding: 0.8rem 2rem;
+    border-radius: 40px;
+    border: 1px solid rgba(255,255,255,0.05);
+    color: #aaa;
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+
+.payment-item:hover {
+    border-color: #fff;
+    color: #fff;
+}
+/* Trade Section */
+.trade-section {
+    padding: 5rem 4rem;
+    text-align: center;
+    background: #030305;
+    position: relative;
+    overflow: hidden;
+}
+
+.trade-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 15px,
+        rgba(255,255,255,0.01) 15px,
+        rgba(255,255,255,0.01) 30px
+    );
+    animation: moveTrade 30s linear infinite;
+}
+
+@keyframes moveTrade {
+    0% { transform: translate(0,0); }
+    100% { transform: translate(5%,5%); }
+}
+
+.trade-message {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 0 #222, 6px 6px 0 #111;
+    line-height: 1.3;
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    letter-spacing: 1px;
+}
+/* Community Section */
+.community-section {
+    padding: 6rem 4rem;
+    text-align: center;
+}
+
+.community-card {
+    background: #111113;
+    border: 1px solid rgba(255,255,255,0.03);
+    border-radius: 3rem;
+    padding: 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.community-card h2 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.community-card p {
+    color: #888;
+    margin-bottom: 3rem;
+}
+
+.community-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.btn-wa-group {
+    background: #25d366;
+    color: #000;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: 0.2s;
+}
+
+.btn-wa-group:hover {
+    background: #20b859;
+    transform: scale(1.02);
+}
+
+.btn-wa-channel {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: 0.2s;
+}
+
+.btn-wa-channel:hover {
+    border-color: #fff;
+}
+
+.btn-tg {
+    background: #0088cc;
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: 0.2s;
+}
+
+.btn-tg:hover {
+    background: #0099dd;
+}
+/* Modal */
+#orderModal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.95);
+    backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 2rem;
+    padding: 3rem;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    animation: modalPop 0.2s ease;
+}
+
+@keyframes modalPop {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.modal-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.modal-content p {
+    color: #aaa;
+    margin-bottom: 2rem;
+}
+
+.modal-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 1.2rem;
+    margin: 1rem 0;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    background: #222;
+    color: #fff;
+    border: 1px solid #444;
+}
+
+.modal-btn:hover {
+    background: #333;
+    border-color: #fff;
+}
+
+.close-btn {
+    position: absolute;
+    top: 1rem; right: 1.5rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #666;
+    transition: 0.2s;
+}
+
+.close-btn:hover {
+    color: #fff;
+}
+/* Ads Popup */
+#adsPopup {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    background: rgba(0,0,0,0.95);
+    backdrop-filter: blur(10px);
+}
+
+.ads-content {
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 2rem;
+    padding: 2.5rem;
+    width: 90%;
+    max-width: 380px;
+    text-align: center;
+    position: relative;
+    animation: popIn 0.2s ease;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.ads-content img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    margin-bottom: 1.5rem;
+}
+
+.ads-content p {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 2rem;
+}
+
+.join-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: 0.2s;
+    width: 100%;
+}
+
+.join-btn:hover {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+.close-ads {
+    position: absolute;
+    top: 1rem; right: 1.5rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #666;
+    transition: 0.2s;
+}
+
+.close-ads:hover {
+    color: #fff;
+}
+        /* Footer */
+        .footer {
+            padding: 3rem 4rem;
+            border-top: 1px solid rgba(255,255,255,0.02);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .footer span {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .navbar {
+                padding: 2rem;
+            }
+            
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+                gap: 2rem;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .services-grid,
+            .products-grid,
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .products-section,
+            .services-section,
+            .community-section {
+                padding: 3rem 2rem;
+            }
+            
+            .trade-message {
+                font-size: 1.8rem;
+            }
+            
+            .footer {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-card {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<body>
+    <!-- LOADING SCREEN -->
+    <div id="loading">
+        <div class="loading-text">
+            <span>𝗩𝗶𝘀𝗲𝗿𝘆𝘀 𝗡𝗲𝗺𝗲𝘀𝗶𝘀.</span>
+        </div>
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">𝗩𝗶𝘀𝗲𝗿𝘆𝘀<span>𝗡𝗲𝗺𝗲𝘀𝗶𝘀 𝗜𝗡𝗖</span></div>
+        <div class="nav-links">
+            <a href="#">𝗕𝘂𝘀𝗶𝗻𝗲𝘀𝘀</a>
+            <a href="#">𝗧𝗵𝗲𝗿𝗮𝗽𝘆</a>
+            <a href="#">𝗖𝗼𝗻𝘁𝗮𝗰𝘁</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge"> 𝓒𝓪𝓶𝓮𝓻𝓸𝓸𝓷𝓲𝓪𝓷 🇨🇲 • 𝓒𝓸𝓷𝓼𝓾𝓵𝓽 𝓶𝔂 𝓫𝓲𝓸𝓰𝓻𝓪𝓹𝓱.</div>
+            <h1 class="hero-title">
+                <span>𝗕𝗼𝗻𝗷𝗼𝘂𝗿, 𝘃𝗼𝘂𝘀.</span>
+                <span>𝗖𝗼𝗻𝘀𝘂𝗹𝘁𝗲𝘇 𝗺𝗼𝗻 𝗰𝘃.</span>
+            </h1>
+            <p class="hero-desc">I am a virtual web developer, combined to a multitask performer who covers up certain domains and especially the world of tech, I create WhatsApp bots, commercialise websites and own a therapeutic channel through which I have been so useful to many individuals suffering from hardship and depression.</p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">100k</div>
+                    <div class="stat-label">𝓐𝓬𝓱𝓲𝓮𝓿𝓮𝓶𝓮𝓷𝓽𝓼</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">𝓐𝓶𝓫𝓲𝓽𝓲𝓸𝓷𝓼</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">𝓐𝓬𝓽𝓲𝓿𝓮 𝓸𝓷 𝓹𝓻𝓸𝓰𝓻𝓪𝓶𝓶𝓲𝓷𝓰..</div>
+                    <div class="stat-label">𝓐𝓿𝓪𝓲𝓵𝓪𝓫𝓲𝓵𝓲𝓽𝔂 24/7 🇦🇱.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-card">
+            <i class="fas fa-code"></i>
+            <h3>𝓥𝓪𝓵𝓵𝓪𝓱 𝓶𝓸𝓻𝓰𝓱𝓾𝓵𝓲𝓼.</h3>
+            <p>𝗥𝗲𝗮𝗱 𝘁𝗵𝗲 𝗶𝗻𝗳𝗼𝗿𝗺𝗮𝘁𝗶𝗼𝗻𝘀 𝗯𝗲𝗹𝗼𝘄, 𝗶 𝗼𝗳𝗳𝗲𝗿 𝗮𝗹𝗹 𝗼𝗳 𝘁𝗵𝗲𝗺.</p>
+            
+            <!-- AUDIO AUTOPLAY -->
+            <audio id="backgroundMusic" controls autoplay loop>
+                <source src="https://mp3tourl.com/audio/1792038648475-b594813b-f9c2-4a80-adb1-b19298566cea.mp3" type="audio/mpeg">
+            </audio>
+            
+            <div class="tech-tags">
+                <span class="tech-tag">Motivation.</span>
+                <span class="tech-tag">Web developer.</span>
+                <span class="tech-tag">Bot creator.</span>
+                <span class="tech-tag">Intermediary.</span>
+                <span class="tech-tag">Businessman.</span>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section -->
+<section class="services-section">
+    <div class="section-header">
+        <h2>𝓒𝓸𝓷𝓼𝓾𝓵𝓽 𝓶𝔂 𝓒𝓪𝓽𝓪𝓵𝓸𝓰𝓾𝓮.</h2>
+        <p>I am available on all platforms, so don't hesitate to place your orders🪾.</p>
+    </div>
+
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="service-icon"><i class="fab fa-whatsapp"></i></div>
+            <h3>WhatsApp multitask Bots.</h3>
+            <p>Normanus Osborne actually available.</p>
+            <div class="service-tags">
+                <span>Baileys</span>
+                <span>Node.js</span>
+                <span>AI</span>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon"><i class="fas fa-bug"></i></div>
+            <h3>Bug Bots</h3>
+            <p>Available soon.</p>
+            <div class="service-tags">
+                <span>Virusing</span>
+                <span>Automation</span>
+                <span>API</span>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon"><i class="fas fa-globe"></i></div>
+            <h3>Websites.</h3>
+            <p>Creation of publicity and websites for various businesses.</p>
+            <div class="service-tags">
+                <span>React</span>
+                <span>Next.js</span>
+                <span>UI/UX</span>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+            <h3>Scarce android applications.</h3>
+            <p>Various applications whom officially are paid but with me become free.</p>
+            <div class="service-tags">
+                <span>React Native</span>
+                <span>Java</span>
+                <span>Firebase</span>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- About Section -->
+<section class="about-section">
+    <div class="about-grid">
+        <div class="about-content">
+            <h2>· 𝗡𝗢𝗧𝗜𝗖𝗘:</h2>
+            <p>I am a serious person with a business enterprise well known on all aspects of tech and when it comes to working team I have the Nemesis developers me, so in case of reliability and trust I advice you trust me and you won't regret..</p>
+            <div class="quiet-quote">
+                𝗡𝗼𝘁𝗶𝗰𝗲 𝗮𝗴𝗮𝗶𝗻.🇦🇱. 
+            </div>
+            <p>Make sure when you contact me it's to make business or negotiate, I respond depending on the content of your message.</p>
+        </div>
+        <div>
+            <ul class="skills-list">
+                <li><i class="fas fa-check"></i> 𝑊ℎ𝑎𝑡𝑠𝑎𝑝𝑝 𝑚𝑢𝑙𝑡𝑖𝑓𝑢𝑛𝑡𝑖𝑜𝑛𝑎𝑙 𝑏𝑜𝑡𝑠.</li>
+                <li><i class="fas fa-check"></i> 𝐵𝑢𝑔 𝑏𝑜𝑡𝑠 𝑎𝑛𝑑 𝑎𝑢𝑡𝑜𝑚𝑎𝑡𝑖𝑜𝑛.</li>
+                <li><i class="fas fa-check"></i> 𝑁𝑒𝑤𝑙𝑦 𝑒𝑛𝑔𝑎𝑔𝑒𝑑 𝑖𝑛𝑡𝑜 𝑤𝑒𝑏 𝑑𝑒𝑣𝑒𝑙𝑜𝑝𝑚𝑒𝑛𝑡𝑠.</li>
+                <li><i class="fas fa-check"></i> 𝐴𝑝𝑝𝑙𝑖𝑐𝑎𝑡𝑖𝑜𝑛𝑠.</li>
+                <li><i class="fas fa-check"></i> 𝐻𝑜𝑠𝑡𝑖𝑛𝑔 𝑝𝑙𝑎𝑡𝑓𝑜𝑟𝑚𝑠.</li>
+                <li><i class="fas fa-check"></i> 𝐶𝑜𝑛𝑡𝑒𝑛𝑡 𝑐𝑟𝑒𝑎𝑡𝑜𝑟.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- Products Section -->
+<section class="products-section">
+    <div class="section-header">
+        <h2>𝗗𝗶𝘀𝗽𝗼𝗻𝗶𝗯𝗹𝗲 · 𝗢𝗿𝗱𝗲𝗿 𝘁𝗵𝗲𝗺.</h2>
+        <p>Online 24/7 Viserys Nemesis incorporations 🇦🇱.</p>
+    </div>
+
+    <div class="products-grid">
+        <div class="product-card special">
+            <div class="product-icon"><i class="fab fa-whatsapp"></i></div>
+            <h3>Adrianna ai.</h3>
+            <p>Bot complete with admin panel.</p>
+            <div class="product-price">5000 FCFA</div>
+            <button class="product-btn" onclick="openProductModal('Bot WhatsApp Pro', '7000 FCFA')">Commander</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-icon"><i class="fas fa-bug"></i></div>
+            <h3>Bug Bot</h3>
+            <p>For bug operations..</p>
+            <div class="product-price">4000 FCFA</div>
+            <button class="product-btn" onclick="openProductModal('Bug Bot', '4000 FCFA')">Commander</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-icon"><i class="fas fa-store"></i></div>
+            <h3>Panel Pterodactyl</h3>
+            <p>Hosting Game/Servers</p>
+            <div class="product-price">From 3 000 FCFA</div>
+            <button class="product-btn" onclick="openProductModal('Panel Pterodactyl', 'à partir de 3 000 FCFA')">Commander</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-icon"><i class="fas fa-mobile-alt"></i></div>
+            <h3>Applications APK</h3>
+            <p>Premium unblocked..</p>
+            <div class="product-price">8 000 FCFA</div>
+            <button class="product-btn" onclick="openProductModal('Application APK', '8 000 FCFA')">Commander</button>
+        </div>
+
+        <div class="product-card">
+            <div class="product-icon"><i class="fas fa-globe"></i></div>
+            <h3>websites</h3>
+            <p>annexed websites.</p>
+            <div class="product-price">10 000 FCFA</div>
+            <button class="product-btn" onclick="openProductModal('Site Web Pro', '10 000 FCFA')">Commander</button>
+        </div>
+
+        <div class="product-card special">
+            <div class="product-icon"><i class="fas fa-crown"></i></div>
+            <h3>Vps Ultra Core</h3>
+            <p>For panel creations.</p>
+            <div class="product-price">8000 FCFA</div>
+            <button class="product-btn" onclick="openProductModal('Vps Ultra Core', '8000 FCFA')">Commander</button>
+        </div>
+    </div>
+</section>
+<!-- Payment Section -->
+<section class="payment-section">
+    <h2>𝗧𝗿𝗮𝗻𝘀𝗮𝗰𝘁𝗶𝗼𝗻𝗮𝗹 𝘀𝗲𝗰𝘁𝗼𝗿𝘀.</h2>
+    <div class="payment-grid">
+        <div class="payment-item">Orange money.</div>
+        <div class="payment-item">Mobile money.</div>
+        <div class="payment-item">Bank payment.</div>
+        <div class="payment-item">PayPal.</div>
+        <div class="payment-item">Minipay</div>
+        <div class="payment-item">VISA card.</div>
+    </div>
+</section>
+
+<!-- Trade Section -->
+<section class="trade-section">
+    <div class="trade-message">
+        "𝓥𝓪𝓵𝓵𝓪𝓱 𝓶𝓸𝓻𝓰𝓱𝓾𝓵𝓲𝓼 🇦🇱."
+    </div>
+</section>
+<!-- Community Section -->
+<section class="community-section" id="community">
+    <div class="community-card">
+        <h2>Rejoins l'écosystème</h2>
+        <p>Entrepreneurs, développeurs, curieux : échangeons et construisons ensemble.</p>
+        
+        <div class="community-buttons">
+            <a href="https://chat.whatsapp.com/ErkYail34YGJOoCdZHSkU6?s=cl&p=a&mlu=4&ilr=4" target="_blank" class="btn-wa-group"><i class="fab fa-whatsapp"></i> Groupe WhatsApp</a>
+            <a href="https://whatsapp.com/channel/0029VbBeEgpF1YlTCtm4DO0c" target="_blank" class="btn-wa-channel"><i class="fab fa-whatsapp"></i> Channel 1</a>
+            <a href="https://whatsapp.com/channel/0029VbBeEgpF1YlTCtm4DO0c" target="_blank" class="btn-wa-channel"><i class="fab fa-whatsapp"></i> Channel 2</a>
+            <a href="https://t.me/Visery007" target="_blank" class="btn-tg"><i class="fab fa-telegram"></i> Telegram</a>
+        </div>
+    </div>
+</section>
+<!-- Footer -->
+<footer class="footer">
+    <div> 2026 · <span>𝗩𝗶𝘀𝗲𝗿𝘆𝘀</span> · 𝗖𝗮𝗺𝗲𝗿𝗼𝗼𝗻 🇨🇲.</div>
+    <div>Automation · Infrastructure · Innovation</div>
+</footer>
+
+<!-- Order Modal -->
+<div id="orderModal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeProductModal()">&times;</span>
+        <h2>Commander</h2>
+        <p id="modalProductInfo"></p>
+        <button id="modalWaBtn" class="modal-btn"><i class="fab fa-whatsapp"></i> Commander via WhatsApp</button>
+        <button id="modalTgBtn" class="modal-btn"><i class="fab fa-telegram"></i> Commander via Telegram</button>
+    </div>
+</div>
+
+<!-- Ads Popup -->
+<div id="adsPopup">
+    <div class="ads-content">
+        <span class="close-ads" onclick="closeAdsPopup()">&times;</span>
+        <img src="https://postimg.cc/ygJq7dkR" alt="𝓑𝓛𝓐𝓒𝓚 𝓧𝓨 𝓥𝓘𝓢𝓔𝓡𝓨𝓢 𝓝𝓔𝓜𝓔𝓢𝓘𝓢">
+        <p>Follow me on Whatsapp.</p>
+        <a href="https://whatsapp.com/channel/0029VbBeEgpF1YlTCtm4DO0c" target="_blank" class="join-btn"><i class="fab fa-whatsapp"></i> 𝓒𝓵𝓲𝓬𝓴 𝓽𝓸 𝓙𝓸𝓲𝓷.</a>
+    </div>
+</div>
+    <script>
+        // LOADING SCREEN
+        const progressBar = document.getElementById('progress-bar');
+        const loading = document.getElementById('loading');
+        let progress = 0;
+
+        const interval = setInterval(() => {
+            progress += Math.random() * 12 + 5;
+            if (progress >= 100) {
+                progress = 100;
+                clearInterval(interval);
+                setTimeout(() => {
+                    loading.style.display = 'none';
+                    showAdsPopup();
+                    // Autoplay audio (déjà géré par l'attribut autoplay)
+                }, 200);
+            }
+            progressBar.style.width = progress + '%';
+        }, 100);
+
+        // MODAL COMMANDE
+        let currentProduct = '', currentPrice = '';
+
+        function openProductModal(product, price) {
+            currentProduct = product;
+            currentPrice = price;
+            document.getElementById('modalProductInfo').innerText = `${product} - ${price}`;
+            document.getElementById('orderModal').style.display = 'flex';
+        }
+
+        function closeProductModal() {
+            document.getElementById('orderModal').style.display = 'none';
+        }
+
+        document.getElementById('modalWaBtn').addEventListener('click', () => {
+            const msg = `> 𝓥𝓪𝓵𝓵𝓪𝓱 𝓶𝓸𝓻𝓰𝓱𝓾𝓵𝓲𝓼. 𝗜 𝘄𝗶𝘀𝗵 𝘁𝗼 𝗰𝗼𝗺𝗺𝗮𝗻𝗱 ${currentProduct} 𝗮𝘁 𝘁𝗵𝗶𝘀 𝗽𝗿𝗶𝗰𝗲 ${currentPrice}.`;
+            window.open(`https://wa.me/237680333605?text=${encodeURIComponent(msg)}`, '_blank');
+            closeProductModal();
+        });
+
+        document.getElementById('modalTgBtn').addEventListener('click', () => {
+            const msg = `Hello Viserys, I wish to command ${currentProduct} at ${currentPrice}.`;
+            window.open(`https://t.me/viserys007?text=${encodeURIComponent(msg)}`, '_blank');
+            closeProductModal();
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target.id === 'orderModal') closeProductModal();
+        });
+
+        // ADS POPUP
+        function showAdsPopup() {
+            document.getElementById('adsPopup').style.display = 'flex';
+        }
+
+        function closeAdsPopup() {
+            document.getElementById('adsPopup').style.display = 'none';
+        }
+
+        document.getElementById('adsPopup').addEventListener('click', (e) => {
+            if (e.target.id === 'adsPopup') closeAdsPopup();
+        });
+
+        // GESTION AUDIO (au cas où)
+        document.addEventListener('DOMContentLoaded', function() {
+            const music = document.getElementById('backgroundMusic');
+            // Tentative de lecture auto (déjà autoplay)
+            music.play().catch(() => {
+                console.log("Autoplay bloqué, lecture au clic sur la page");
+                document.body.addEventListener('click', function() {
+                    music.play();
+                }, { once: true });
+            });
+        });
+    </script>
+</body>
+</html>
